@@ -35,7 +35,7 @@ public class PersonDaoJdbc implements PersonDao {
         final HashMap<String, Object> params = new HashMap<>(1);
         params.put("id", person.getId());
         params.put("name", person.getName());
-        jdbc.update("insert into persons (id, name) values (:id, :name)", params);
+        jdbc.update("insert into persons (id, name, descr) values (:id, :name, :name )", params);
     }
 
     @Override
@@ -58,7 +58,8 @@ public class PersonDaoJdbc implements PersonDao {
         public Person mapRow(ResultSet resultSet, int i) throws SQLException {
             int id = resultSet.getInt("id");
             String name = resultSet.getString("name");
-            return new Person(id, name);
+            String description = resultSet.getString("descr");
+            return new Person(id, name, description);
         }
     }
 }

@@ -2,17 +2,18 @@ package com.sk.springjpa.dao;
 
 import com.sk.springjpa.domain.Person;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
  * @author Sergey Kuzhel
  */
 @Repository
+@SuppressWarnings("JpaQlInspection")
 public class PersonDaoJpa implements PersonDao {
 
     @PersistenceContext
@@ -28,6 +29,7 @@ public class PersonDaoJpa implements PersonDao {
     @Transactional
     public void insert(Person person) {
         em.persist(person);
+       // em.getTransaction().commit();
     }
 
     @Override

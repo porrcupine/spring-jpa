@@ -2,10 +2,7 @@ package com.sk.springjpa.domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 /**
@@ -16,6 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "PERSONS")
 public class Person {
 
     @Id
@@ -25,6 +23,9 @@ public class Person {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "descr")
+    private String descr;
 
     public Person(String name) {
         this.name = name;
