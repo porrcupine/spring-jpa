@@ -15,14 +15,17 @@ public class ArraysTasks {
     private int[] testArr2 = {42, 32, 32, 34, 32, 22, 12, 12};
     private int[] testArr3 = {9, 3, 9, 3, 9, 7, 9};
     private int[] testArr4 = {9};
+    //TEST TASK
     private int[] testArr5 = {10, 2, 5, 1, 8, 20};
-    private int[] testArr6 = {8, 4, 8, 9, 7};
+    private int[] testArr7 = {5, 10, 18, 7, 8, 3};
+    private int[] testArr8 = {10, 20, 30};
+    private int[] testArr9 = {8, 4, 8, 9, 7};
 
-    private int[] A = new int[]{10, 2, 5, 1, 8, 20, 4, 14, 23, 56, 76};
-    private int[] B = new int[]{10, 3, 6, 8, 3, 6, 1, 9};
+    private int[] a = new int[]{10, 2, 5, 1, 8, 20, 4, 14, 23, 56, 76};
+    private int[] b = new int[]{10, 3, 6, 8, 3, 6, 1, 9};
 
     @Test
-    public void main() {
+    public void mainT() {
 //        solutionFindMinPositiveValue(testArr);
 
 //        for (int i : testArr) {
@@ -35,11 +38,18 @@ public class ArraysTasks {
         //  oddOccurencesInArray1(testArr);
        // trianglePerimeter(testArr6);
 
-        System.out.println(solutionTask2(25,4));
-        System.out.println(solutionTask2(8,0));
-        System.out.println(solutionTask2(10,10));
-        System.out.println(solutionTask(A));
-        System.out.println(solutionTask(B));
+//        System.out.println(minimumRounds(25,4));
+//        System.out.println(minimumRounds(8,0));
+//        System.out.println(minimumRounds(10,10));
+//
+//
+//        System.out.println(solutionTask(a));
+//        System.out.println(solutionTask(b));
+
+        //trianglePerimeter(testArr5);
+//        System.out.println(trianglePerimeterOther(testArr8));
+        System.out.println(minimumRounds(18, 2));
+
     }
 
     public void performanceArrayLinkedList() {
@@ -271,22 +281,22 @@ public class ArraysTasks {
         return result;
     }
 
+    private int ttest() {
+        return 1;
+    }
 
-    /**
-     * Task 1
-     * @param  A
-     * @return int max Perimeter
-     */
-    private  static int solutionTask(int[] A) {
+
+    //======solved for interview TRIANGLE
+    public int trianglePerimeterOther(int[] a) {
         ArrayList<Integer> test= new ArrayList<>();
-        int B[]= sort(A);
-        for (int i = 0; i < B.length - 2; i++) {
+        int b[]= sort(a);
+        for (int i = 0; i < b.length - 2; i++) {
             if (
-                    (B[i] +  B[i + 1] > B[i + 2]) &&
-                            ( B[i + 1] + B[i + 2] > B[i])&&
-                            ( B[i] +  B[i + 2] > B[i + 1]))
+                    (b[i] +  b[i + 1] > b[i + 2]) &&
+                            ( b[i + 1] + b[i + 2] > b[i])&&
+                            ( b[i] +  b[i + 2] > b[i + 1]))
             {
-                test.add(B[i]+B[i+1]+B[i+2]);
+                test.add(b[i]+b[i+1]+b[i+2]);
             }
         }
 
@@ -298,38 +308,33 @@ public class ArraysTasks {
         }
     }
 
-    private static   int[] sort(int[] A)
+    private int[] sort(int[] a)
     {
-        for(int i = 1 ; i < A.length ;){
-            if(A[1] < A[0]) {
-                int temp = A[i];
-                A[i] = A[i -1];
-                A[i -1] = temp;
+        for(int i = 1 ; i < a.length ;){
+            if(a[1] < a[0]) {
+                int temp = a[i];
+                a[i] = a[i -1];
+                a[i -1] = temp;
             }
-            if(A[i] < A[i-1]){
-                int  temp = A[i];
-                A[i] = A[i -1];
-                A[i -1] = temp;
+            if(a[i] < a[i-1]){
+                int  temp = a[i];
+                a[i] = a[i -1];
+                a[i -1] = temp;
                 i--;
             }
             else{i++;}
         }
-        return A;
+        return a;
 
     }
 
-    /**
-     * Task 2
-     * @param N
-     * @param K
-     * @return int min value of retries
-     */
-    private static int   solutionTask2 (int N,int K)
+    //======solved for interview John and Casino
+    private int minimumRounds(int n, int k)
     {
 
         HashMap<String,Integer> resultAllIn= new HashMap();
-        resultAllIn.put("iteration",N);
-        resultAllIn.put("AllIn",K);
+        resultAllIn.put("iteration",n);
+        resultAllIn.put("AllIn",k);
         int j=-1;
         do {
             resultAllIn=divMinusOdd(resultAllIn);
@@ -340,18 +345,18 @@ public class ArraysTasks {
 
     }
 
-    private  static HashMap<String,Integer> divMinusOdd(HashMap<String,Integer> resultInn)
+    private HashMap<String,Integer> divMinusOdd(HashMap<String,Integer> resultInn)
     {
-        int N= resultInn.get("iteration");
-        int K= resultInn.get("AllIn");
-        if(N%2==0&&K!=0)
+        int n= resultInn.get("iteration");
+        int k= resultInn.get("AllIn");
+        if(n%2==0&&k!=0)
         {
-            resultInn.put("iteration",N/2);
-            resultInn.put("AllIn",K-1);
+            resultInn.put("iteration",n/2);
+            resultInn.put("AllIn",k-1);
         }
         else
         {
-            resultInn.put("iteration",N-1);
+            resultInn.put("iteration",n-1);
         }
         return resultInn;
     }

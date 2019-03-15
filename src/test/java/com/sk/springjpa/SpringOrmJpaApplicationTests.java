@@ -2,6 +2,7 @@ package com.sk.springjpa;
 
 import com.sk.springjpa.dao.PersonDaoJpa;
 import com.sk.springjpa.domain.Person;
+import com.sk.springjpa.repository.PersonRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +20,9 @@ public class SpringOrmJpaApplicationTests {
 
     @Autowired
     PersonDaoJpa dao;
+
+    @Autowired
+    PersonRepository repository;
 
     //@Before
     public void setUpBeforeMethod() {
